@@ -31,17 +31,6 @@ public class AikeSplashActivity extends Activity {
   }
 
   private void initView() {
-    findViewById(R.id.load_extern).setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        if (RePlugin.isPluginInstalled("user")){
-          Toast.makeText(AikeSplashActivity.this,"插件已经安装",Toast.LENGTH_SHORT).show();
-        }else {
-          Toast.makeText(AikeSplashActivity.this,"插件未安装",Toast.LENGTH_SHORT).show();
-        }
-      }
-    });
-
     findViewById(R.id.open_extern).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {

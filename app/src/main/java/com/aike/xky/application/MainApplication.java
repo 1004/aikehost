@@ -2,6 +2,7 @@ package com.aike.xky.application;
 
 import android.content.Context;
 import com.aike.xky.BuildConfig;
+import com.aike.xky.application.plugin.DebugLoadSdPlugin;
 import com.aike.xky.application.plugin.HostCallbacks;
 import com.aike.xky.application.plugin.HostEventCallbacks;
 import com.qihoo360.replugin.RePlugin;
@@ -18,7 +19,6 @@ public class MainApplication extends RePluginApplication {
   @Override
   public void onCreate() {
     super.onCreate();
-
   }
 
   @Override
@@ -26,6 +26,8 @@ public class MainApplication extends RePluginApplication {
     super.attachBaseContext(base);
     // FIXME 允许接收rpRunPlugin等Gradle Task，发布时请务必关掉，以免出现问题
     RePlugin.enableDebugger(base, BuildConfig.DEBUG);
+    //按照sdcard插件
+    DebugLoadSdPlugin.checkDebugPush();
   }
 
   @Override
@@ -42,6 +44,7 @@ public class MainApplication extends RePluginApplication {
 
     return rePluginConfig;
   }
+
 
   @Override
   protected RePluginCallbacks createCallbacks() {
