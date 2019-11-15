@@ -3,6 +3,11 @@
   android:orientation="vertical" android:layout_width="match_parent"
   android:layout_height="match_parent">
   <Button
+    android:id="@+id/init_test"
+    android:text="初始化测试"
+    android:layout_width="match_parent"
+    android:layout_height="50dp" />
+  <Button
     android:id="@+id/open_extern"
     android:text="打开外置插件"
     android:layout_width="match_parent"

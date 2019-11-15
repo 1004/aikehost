@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.Toast;
+import com.aike.router.Router;
 import com.aike.xky.R;
 import com.qihoo360.replugin.RePlugin;
 import com.qihoo360.replugin.model.PluginInfo;
@@ -31,11 +32,16 @@ public class AikeSplashActivity extends Activity {
   }
 
   private void initView() {
+    findViewById(R.id.init_test).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Router.init(AikeSplashActivity.this);
+      }
+    });
     findViewById(R.id.open_extern).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        Intent user = RePlugin.createIntent("user", "com.aike.plugin.user.main.UserMainActivity");
-        RePlugin.startActivity(AikeSplashActivity.this,user);
+        Router.create("xky://user/main").navigate(AikeSplashActivity.this);
       }
     });
   }

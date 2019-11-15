@@ -1,6 +1,7 @@
 package com.aike.xky.application;
 
 import android.content.Context;
+import com.aike.router.Router;
 import com.aike.xky.BuildConfig;
 import com.aike.xky.application.plugin.DebugLoadSdPlugin;
 import com.aike.xky.application.plugin.HostCallbacks;
@@ -19,6 +20,7 @@ public class MainApplication extends RePluginApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+    init();
   }
 
   @Override
@@ -28,6 +30,10 @@ public class MainApplication extends RePluginApplication {
     RePlugin.enableDebugger(base, BuildConfig.DEBUG);
     //按照sdcard插件
     DebugLoadSdPlugin.checkDebugPush();
+  }
+
+  private void init(){
+    //Router.init(this);
   }
 
   @Override
