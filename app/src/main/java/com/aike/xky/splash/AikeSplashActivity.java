@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 import com.aike.router.Router;
 import com.aike.xky.R;
+import com.aike.xky.application.plugin.DebugLoadSdPlugin;
 import com.qihoo360.replugin.RePlugin;
 import com.qihoo360.replugin.model.PluginInfo;
 import com.qihoo360.replugin.utils.FileUtils;
@@ -35,12 +36,19 @@ public class AikeSplashActivity extends Activity {
     findViewById(R.id.init_test).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        DebugLoadSdPlugin.checkDebugPush();
       }
     });
-    findViewById(R.id.open_extern).setOnClickListener(new View.OnClickListener() {
+    findViewById(R.id.open_extern_user).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
         Router.create("xky://user/main").navigate(AikeSplashActivity.this);
+      }
+    });
+    findViewById(R.id.open_extern_cource).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Router.create("xky://cource/main").navigate(AikeSplashActivity.this);
       }
     });
   }

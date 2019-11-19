@@ -1,16 +1,20 @@
 package com.aike.xky.application;
 
 import android.content.Context;
+import android.text.TextUtils;
 import com.aike.eventbus.AikeEventBusIPC;
 import com.aike.router.Router;
 import com.aike.xky.BuildConfig;
 import com.aike.xky.application.plugin.DebugLoadSdPlugin;
 import com.aike.xky.application.plugin.HostCallbacks;
 import com.aike.xky.application.plugin.HostEventCallbacks;
+import com.aike.xky.utils.AppUtil;
 import com.qihoo360.replugin.RePlugin;
 import com.qihoo360.replugin.RePluginApplication;
 import com.qihoo360.replugin.RePluginCallbacks;
 import com.qihoo360.replugin.RePluginConfig;
+import com.qihoo360.replugin.model.PluginInfo;
+import java.util.List;
 
 /**
  * @Author xiekongying001
@@ -33,12 +37,42 @@ public class MainApplication extends RePluginApplication {
 
   private void init(){
     //安装sdcard插件
-    DebugLoadSdPlugin.checkDebugPush();
+    //DebugLoadSdPlugin.checkDebugPush();
     //初始化Router
-    Router.init(this);
-    //初始化Eventbus
-    AikeEventBusIPC.init();
+    if(isMainProcess()){
+      initPlugin();
+      Router.init(this);
+      //初始化Eventbus
+      AikeEventBusIPC.init();
+    }
   }
+
+  //初始化插件
+  private void initPlugin() {
+    List<PluginInfo> pluginList = RePlugin.getPluginInfoList();
+    for (PluginInfo plugin : pluginList) {
+      RePlugin.fetchContext(plugin.getName());
+    }
+  }
+
+  /**
+   * 判断当前运行时是否为主进程
+   *
+   * @return
+   */
+  private boolean isMainProcess() {
+    String processName = AppUtil.getProcessName();
+    if (!TextUtils.isEmpty(processName) && processName.equals(this.getPackageName())) {
+      return true;
+    }
+    return false;
+  }
+
+
+  private void loadPlugin(){
+
+  }
+
 
   @Override
   protected RePluginConfig createConfig() {

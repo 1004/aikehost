@@ -19,14 +19,16 @@ public class DebugLoadSdPlugin {
     if(files != null && files.length > 0) {
       for (int i = 0; i < files.length; i++) {
         java.io.File file = files[i];
-        if(file.isDirectory()) {
+        if (file.isDirectory()) {
           installExternalPlugin(file);
-        } else if(file.isFile()) {
-          PluginInfo install = RePlugin.install(file.getAbsolutePath());
-          if (install == null){
-            Log.i(TAG,"安装外置插件失败");
-          }else {
-            Log.i(TAG,"安装外置插件成功");
+        } else if (file.isFile()) {
+          String pluginPath = file.getAbsolutePath();
+          PluginInfo install = RePlugin.install(pluginPath);
+          if (install == null) {
+            Log.i(TAG, "安装外置插件失败");
+          } else {
+            RePlugin.preload(install);
+            Log.i(TAG, "安装外置插件成功");
           }
         }
       }

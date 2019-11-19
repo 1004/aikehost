@@ -8,8 +8,13 @@
     android:layout_width="match_parent"
     android:layout_height="50dp" />
   <Button
-    android:id="@+id/open_extern"
-    android:text="打开外置插件"
+    android:id="@+id/open_extern_user"
+    android:text="打开用户插件"
+    android:layout_width="match_parent"
+    android:layout_height="50dp" />
+  <Button
+    android:id="@+id/open_extern_cource"
+    android:text="打开课程插件"
     android:layout_width="match_parent"
     android:layout_height="50dp" />
 </LinearLayout>
