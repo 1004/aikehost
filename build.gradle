@@ -27,6 +27,7 @@ allprojects {
       maven { url "https://dl.bintray.com/xky888xky/aikerouter-compile"}
       maven { url "https://dl.bintray.com/xky888xky/aikerouter-router"}
       maven { url "https://dl.bintray.com/xky888xky/aikerouter-annocation"}
+      maven { url "https://dl.bintray.com/xky888xky/aike_eventbus"}
     }
 }
 

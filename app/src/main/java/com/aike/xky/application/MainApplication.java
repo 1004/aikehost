@@ -1,6 +1,7 @@
 package com.aike.xky.application;
 
 import android.content.Context;
+import com.aike.eventbus.AikeEventBusIPC;
 import com.aike.router.Router;
 import com.aike.xky.BuildConfig;
 import com.aike.xky.application.plugin.DebugLoadSdPlugin;
@@ -28,12 +29,15 @@ public class MainApplication extends RePluginApplication {
     super.attachBaseContext(base);
     // FIXME 允许接收rpRunPlugin等Gradle Task，发布时请务必关掉，以免出现问题
     RePlugin.enableDebugger(base, BuildConfig.DEBUG);
-    //按照sdcard插件
-    DebugLoadSdPlugin.checkDebugPush();
   }
 
   private void init(){
-    //Router.init(this);
+    //安装sdcard插件
+    DebugLoadSdPlugin.checkDebugPush();
+    //初始化Router
+    Router.init(this);
+    //初始化Eventbus
+    AikeEventBusIPC.init();
   }
 
   @Override
