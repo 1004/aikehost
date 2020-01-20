@@ -36,7 +36,8 @@ public class AikeSplashActivity extends Activity {
     findViewById(R.id.init_test).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        DebugLoadSdPlugin.checkDebugPush(AikeSplashActivity.this);
+        //DebugLoadSdPlugin.checkDebugPush(AikeSplashActivity.this);
+        Router.init(AikeSplashActivity.this.getApplicationContext());
       }
     });
     findViewById(R.id.open_extern_user).setOnClickListener(new View.OnClickListener() {

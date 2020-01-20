@@ -2,6 +2,7 @@ package com.aike.xky.application;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import com.aike.eventbus.AikeEventBusIPC;
 import com.aike.router.Router;
 import com.aike.xky.BuildConfig;
@@ -51,6 +52,7 @@ public class MainApplication extends RePluginApplication {
   private void initPlugin() {
     List<PluginInfo> pluginList = RePlugin.getPluginInfoList();
     for (PluginInfo plugin : pluginList) {
+      Log.i("MainApplication","-----"+plugin.getName());
       RePlugin.fetchContext(plugin.getName());
     }
   }
