@@ -1,6 +1,6 @@
 package com.aike.xky.utils;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.File;
