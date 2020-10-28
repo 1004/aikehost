@@ -45,7 +45,9 @@ android {
 }
 
 // ATTENTION!!! Must be PLACED AFTER "android{}" to read the applicationId
-apply plugin: 'replugin-host-gradle'
+//apply plugin: 'replugin-host-gradle'
+apply plugin: 'replugin-host-gradle-androidx'
+
 
 /**
  * 配置项均为可选配置，默认无需添加
@@ -72,7 +74,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
 
-    compile 'com.qihoo360.replugin:replugin-host-lib:2.2.4'
+//    compile 'com.qihoo360.replugin:replugin-host-lib:2.2.4'
+    implementation 'io.github.froyohuang:replugin-host-lib-androidx:2.3.3.0'
+
     //eventbus
     compile 'com.aike.eventbus:aikeeventbus:1.0.0'
     implementation 'com.google.code.gson:gson:2.8.5'
@@ -84,4 +88,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.core:core-ktx:1.1.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+
 }
