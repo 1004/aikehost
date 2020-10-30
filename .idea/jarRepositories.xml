@@ -76,5 +76,10 @@
       <option name="name" value="maven" />
       <option name="url" value="https://dl.bintray.com/froyo-github/Replugin-AndroidX" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven10" />
+      <option name="name" value="maven10" />
+      <option name="url" value="http://download.flutter.io" />
+    </remote-repository>
   </component>
 </project>

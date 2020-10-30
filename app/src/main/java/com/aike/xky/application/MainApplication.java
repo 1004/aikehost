@@ -9,6 +9,7 @@ import com.aike.xky.BuildConfig;
 import com.aike.xky.application.plugin.DebugLoadSdPlugin;
 import com.aike.xky.application.plugin.HostCallbacks;
 import com.aike.xky.application.plugin.HostEventCallbacks;
+import com.aike.xky.core.flutter.cache.AikeFlutterCacheManager;
 import com.aike.xky.utils.AppUtil;
 import com.qihoo360.replugin.RePlugin;
 import com.qihoo360.replugin.RePluginApplication;
@@ -23,10 +24,16 @@ import java.util.List;
  * @Des
  */
 public class MainApplication extends RePluginApplication {
+  private static Context context;
   @Override
   public void onCreate() {
     super.onCreate();
+    MainApplication.context = this;
     init();
+  }
+
+  public static Context getContext(){
+    return MainApplication.context;
   }
 
   @Override
@@ -46,6 +53,11 @@ public class MainApplication extends RePluginApplication {
       //初始化Eventbus
       AikeEventBusIPC.init();
     }
+    initFlutter();
+  }
+
+  private void initFlutter(){
+    AikeFlutterCacheManager.getInstance().proLoad(this);
   }
 
   //初始化插件

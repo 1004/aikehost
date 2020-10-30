@@ -10,6 +10,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
+            <option value="$PROJECT_DIR$/../aike_flutter/aike_flutter" />
+            <option value="$PROJECT_DIR$/../aike_flutter/aike_flutter/.android/Flutter" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
           </set>

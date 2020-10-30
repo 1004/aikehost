@@ -17,4 +17,9 @@
     android:text="打开课程插件"
     android:layout_width="match_parent"
     android:layout_height="50dp" />
+  <Button
+    android:id="@+id/open_main"
+    android:text="主页面"
+    android:layout_width="match_parent"
+    android:layout_height="50dp" />
 </LinearLayout>

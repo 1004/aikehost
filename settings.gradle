@@ -1,1 +1,13 @@
 include ':app'
+
+//for flutter
+
+setBinding(new Binding([gradle:this]))
+evaluate(new File(
+   settingsDir.parentFile,
+    'aike_flutter/aike_flutter/.android/include_flutter.groovy'
+))
+
+//可选，可以讲fluttermodel 显示到当前目录
+include ':aike_flutter'
+project(':aike_flutter').projectDir = new File('../aike_flutter/aike_flutter')
