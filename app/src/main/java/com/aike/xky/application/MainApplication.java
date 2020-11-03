@@ -9,14 +9,20 @@ import com.aike.xky.BuildConfig;
 import com.aike.xky.application.plugin.DebugLoadSdPlugin;
 import com.aike.xky.application.plugin.HostCallbacks;
 import com.aike.xky.application.plugin.HostEventCallbacks;
+import com.aike.xky.core.base.PageRouter;
 import com.aike.xky.core.flutter.cache.AikeFlutterCacheManager;
 import com.aike.xky.utils.AppUtil;
+import com.idlefish.flutterboost.FlutterBoost;
+import com.idlefish.flutterboost.Platform;
+import com.idlefish.flutterboost.Utils;
+import com.idlefish.flutterboost.interfaces.INativeRouter;
 import com.qihoo360.replugin.RePlugin;
 import com.qihoo360.replugin.RePluginApplication;
 import com.qihoo360.replugin.RePluginCallbacks;
 import com.qihoo360.replugin.RePluginConfig;
 import com.qihoo360.replugin.model.PluginInfo;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author xiekongying001
@@ -58,6 +64,18 @@ public class MainApplication extends RePluginApplication {
 
   private void initFlutter(){
     AikeFlutterCacheManager.getInstance().proLoad(this);
+    Platform platform = new FlutterBoost.ConfigBuilder(this, new INativeRouter(){
+
+      @Override
+      public void openContainer(Context context, String url, Map<String, Object> urlParams, int requestCode, Map<String, Object> exts) {
+        String assembleUrl = Utils.assembleUrl(url, urlParams);
+        PageRouter.openPageByUrl(context, assembleUrl, urlParams);
+      }
+    }).isDebug(true)
+        .whenEngineStart(FlutterBoost.ConfigBuilder.ANY_ACTIVITY_CREATED)
+        .build();
+
+    FlutterBoost.instance().init(platform);
   }
 
   //初始化插件

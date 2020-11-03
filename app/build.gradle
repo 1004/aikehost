@@ -76,6 +76,7 @@ repluginHostConfig {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':flutter_boost')
     testImplementation 'junit:junit:4.12'
 
 //    compile 'com.qihoo360.replugin:replugin-host-lib:2.2.4'

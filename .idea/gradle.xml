@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/../aike_flutter/aike_flutter/.android/Flutter" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$USER_HOME$/Library/flutter/.pub-cache/hosted/pub.flutter-io.cn/flutter_boost-1.17.1/android" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

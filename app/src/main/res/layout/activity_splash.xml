@@ -22,4 +22,9 @@
     android:text="主页面"
     android:layout_width="match_parent"
     android:layout_height="50dp" />
+  <Button
+    android:id="@+id/open_flutter_boost"
+    android:text="flutter_boost"
+    android:layout_width="match_parent"
+    android:layout_height="50dp" />
 </LinearLayout>

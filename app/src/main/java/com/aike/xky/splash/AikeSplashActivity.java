@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import com.aike.router.Router;
 import com.aike.xky.R;
+import com.aike.xky.core.base.NativeAndFlutterActivity;
+import com.aike.xky.core.base.PageRouter;
 import com.aike.xky.main.MainActivity;
+import java.util.HashMap;
 
 /**
  * @Author xiekongying001
@@ -44,8 +47,18 @@ public class AikeSplashActivity extends Activity {
     findViewById(R.id.open_main).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        Intent intent = new Intent(AikeSplashActivity.this, MainActivity.class);
-        AikeSplashActivity.this.startActivity(intent);
+        //Intent intent = new Intent(AikeSplashActivity.this, MainActivity.class);
+        //AikeSplashActivity.this.startActivity(intent);
+        startActivity(new Intent(AikeSplashActivity.this, NativeAndFlutterActivity.class));
+      }
+    });
+
+    findViewById(R.id.open_flutter_boost).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        HashMap<String, String> params = new HashMap<>();
+        params.put("OneKey", "我是参数甲");
+        PageRouter.openPageByUrl(AikeSplashActivity.this, PageRouter.OnePageUrl, params);
       }
     });
   }
