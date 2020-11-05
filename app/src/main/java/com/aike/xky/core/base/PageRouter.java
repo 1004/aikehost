@@ -3,13 +3,14 @@ package com.aike.xky.core.base;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import com.aike.xky.constant.SchemeChannl;
 import com.idlefish.flutterboost.containers.BoostFlutterActivity;
 import java.util.HashMap;
 import java.util.Map;
 
 public class PageRouter {
     // 界面格式可自定义
-    public final static String OnePageUrl = "url://onePage";
+    public final static String OnePageUrl = SchemeChannl.FLUTTER_SCHEME_CHANNL+"?"+SchemeChannl.AIKE_FLUTTER_URL_KEY;
     public final static String NativePage = "url://nativePage";
 
     public final static Map<String, String> pageName = new HashMap<String, String>() {{
@@ -27,9 +28,10 @@ public class PageRouter {
         if (url.startsWith(OnePageUrl)) {
             // 跳转flutter界面
             flutterPage = pageName.get(OnePageUrl);
-            Intent intent = BoostFlutterActivity.withNewEngine().url(flutterPage).params(params)
-                    .backgroundMode(BoostFlutterActivity.BackgroundMode.opaque).build(context);
-            context.startActivity(intent);
+
+            //Intent intent = BoostFlutterActivity.withNewEngine().url(flutterPage).params(params)
+            //        .backgroundMode(BoostFlutterActivity.BackgroundMode.opaque).build(context);
+            //context.startActivity(intent);
             return true;
         } else if (url.startsWith(NativePage)) {
             // 跳转原生界面

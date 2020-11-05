@@ -1,14 +1,17 @@
 package com.aike.xky.application;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import com.aike.eventbus.AikeEventBusIPC;
+import com.aike.router.Route;
 import com.aike.router.Router;
 import com.aike.xky.BuildConfig;
 import com.aike.xky.application.plugin.DebugLoadSdPlugin;
 import com.aike.xky.application.plugin.HostCallbacks;
 import com.aike.xky.application.plugin.HostEventCallbacks;
+import com.aike.xky.core.base.FlutterRunnerUtils;
 import com.aike.xky.core.base.PageRouter;
 import com.aike.xky.core.flutter.cache.AikeFlutterCacheManager;
 import com.aike.xky.utils.AppUtil;
@@ -68,8 +71,11 @@ public class MainApplication extends RePluginApplication {
 
       @Override
       public void openContainer(Context context, String url, Map<String, Object> urlParams, int requestCode, Map<String, Object> exts) {
-        String assembleUrl = Utils.assembleUrl(url, urlParams);
-        PageRouter.openPageByUrl(context, assembleUrl, urlParams);
+        //String assembleUrl = Utils.assembleUrl(url, urlParams);
+        String targetUrl = FlutterRunnerUtils.decodeUriQuery(url);
+        Bundle bundle = FlutterRunnerUtils.map2Bundle(urlParams);
+        Router.create(targetUrl).with(bundle).navigate(context);
+        //PageRouter.openPageByUrl(context, assembleUrl, urlParams);
       }
     }).isDebug(true)
         .whenEngineStart(FlutterBoost.ConfigBuilder.ANY_ACTIVITY_CREATED)

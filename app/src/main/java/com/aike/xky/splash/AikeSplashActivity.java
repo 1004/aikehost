@@ -1,15 +1,11 @@
 package com.aike.xky.splash;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.aike.router.Router;
 import com.aike.xky.R;
-import com.aike.xky.core.base.NativeAndFlutterActivity;
-import com.aike.xky.core.base.PageRouter;
-import com.aike.xky.main.MainActivity;
-import java.util.HashMap;
+import com.aike.xky.constant.SchemeChannl;
 
 /**
  * @Author xiekongying001
@@ -49,19 +45,19 @@ public class AikeSplashActivity extends Activity {
       public void onClick(View v) {
         //Intent intent = new Intent(AikeSplashActivity.this, MainActivity.class);
         //AikeSplashActivity.this.startActivity(intent);
-        startActivity(new Intent(AikeSplashActivity.this, NativeAndFlutterActivity.class));
+        Router.create(SchemeChannl.AIKE_TEST_PAGE)
+            .navigate(AikeSplashActivity.this);
       }
     });
 
     findViewById(R.id.open_flutter_boost).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        HashMap<String, String> params = new HashMap<>();
-        params.put("OneKey", "我是参数甲");
-        PageRouter.openPageByUrl(AikeSplashActivity.this, PageRouter.OnePageUrl, params);
+        Router.create(SchemeChannl.FLUTTER_SCHEME_CHANNL)
+            .with(SchemeChannl.AIKE_FLUTTER_URL_KEY, "xky/house/onepage")
+            .with("OneKey", "来字原生")
+            .navigate(AikeSplashActivity.this);
       }
     });
   }
-
-
 }

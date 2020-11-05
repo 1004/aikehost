@@ -8,12 +8,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
+import com.aike.router.Route;
 import com.aike.xky.R;
+import com.aike.xky.constant.SchemeChannl;
 import com.idlefish.flutterboost.containers.FlutterFragment;
 import io.flutter.embedding.android.DrawableSplashScreen;
 import io.flutter.embedding.android.SplashScreen;
 import io.flutter.embedding.android.SplashScreenProvider;
 
+@Route(SchemeChannl.AIKE_TEST_PAGE)
 public class NativeAndFlutterActivity extends AppCompatActivity implements SplashScreenProvider {
 
     @Override
@@ -21,7 +24,7 @@ public class NativeAndFlutterActivity extends AppCompatActivity implements Splas
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_native_and_flutter);
         // 将flutter界面作为fragment添加到FrameLayout上
-        FlutterFragment mFragment = new FlutterFragment.NewEngineFragmentBuilder().url("fragmentPage").build();
+        FlutterFragment mFragment = new FlutterFragment.NewEngineFragmentBuilder().url("xky/house/newfragment").build();
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_stub, mFragment)
