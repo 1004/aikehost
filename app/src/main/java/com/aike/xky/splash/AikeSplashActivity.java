@@ -53,8 +53,13 @@ public class AikeSplashActivity extends Activity {
     findViewById(R.id.open_flutter_boost).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        //Router.create(SchemeChannl.FLUTTER_SCHEME_CHANNL)
+        //    .with(SchemeChannl.AIKE_FLUTTER_URL_KEY, "xky/house/onepage")
+        //    .with("OneKey", "来字原生")
+        //    .navigate(AikeSplashActivity.this);
+
         Router.create(SchemeChannl.FLUTTER_SCHEME_CHANNL)
-            .with(SchemeChannl.AIKE_FLUTTER_URL_KEY, "xky/house/onepage")
+            .with(SchemeChannl.AIKE_FLUTTER_URL_KEY, "xky/house/twopage")
             .with("OneKey", "来字原生")
             .navigate(AikeSplashActivity.this);
       }
